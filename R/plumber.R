@@ -35,16 +35,16 @@ function(msg=""){
 #* @param pedigree pedigree
 #* @param age age
 #* @post /predict
-function(pregnant = 6,
-         glucose = 148,
-         pressure = 72,
-         triceps = 35,
-         insulin = 0,
-         mass = 33.6,
-         pedigree = 0.627,
-         age = 50){
-
-  pred <- predict(model, new_data = data.frame(pregnant = pregnant,
+function(  pregnant = 6.0,
+           glucose = 148,
+           pressure = 72,
+           triceps = 35,
+           insulin = 0,
+           mass = 33.6,
+           pedigree = 0.627,
+           age = 50){
+  
+  pred <- predict(model, new_data = data.frame(pregnant = as.double(pregnant),
                                           glucose = glucose,
                                           pressure = pressure,
                                           triceps = triceps,
@@ -52,7 +52,6 @@ function(pregnant = 6,
                                           mass = mass,
                                           pedigree = pedigree,
                                           age = age))
-  return(as.character(pred$.pred_class)) 
-  
-}
+  return(as.character(pred$.pred_class))
 
+}
